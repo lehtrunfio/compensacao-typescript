@@ -1,0 +1,18 @@
+{
+  "name": "compensacao-typescript",
+  "version": "1.0.0",
+  "description": "Projeto de compensacao sobre Git, GitHub, TypeScript e variaveis",
+  "private": true,
+  "scripts": {
+    "dev": "tsx src/Estatisticas.ts",
+    "build": "tsc",
+    "start": "node dist/Estatisticas.js"
+  },
+  "keywords": ["typescript", "git", "github"],
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  }
+}
