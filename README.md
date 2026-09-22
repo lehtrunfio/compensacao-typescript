@@ -1,17 +1,23 @@
 # Compensação TypeScript
 
-**Aluno:** [LETÍCIA DA SILVA TRUNFIO]
-**Turma:** [CIENCIA DA COMPUTAÇÃO, TURMA A - NOTURNO]
-**Data:** [22/09/2026]
+**Aluna:** Letícia da Silva Trunfio
+**Turma:** Ciência da Computação, turma A — noturno
+**Data:** 22/09/2026
 
 Projeto de compensação de carga horária sobre Git, GitHub, TypeScript, variáveis, escopo e tipagem.
+
+## Ambiente usado
+
+Não consegui instalar o Node.js no computador disponível, então o `src/Estatisticas.ts` foi executado no **Playground oficial do TypeScript** (typescriptlang.org/play), conforme sugestão do professor. A saída obtida está registrada no item B5 do `RESPOSTAS.md`.
+
+O Playground exibe o JavaScript gerado ao lado do código original e mostra os erros de tipo antes da execução. Os comandos `npm run dev` e `npm run build` dependem do Node instalado e não puderam ser executados.
 
 ## Estrutura
 
 ```text
 compensacao-typescript/
 ├── dist/
-│   └── Estatisticas.js      # JavaScript transpilado
+│   └── Estatisticas.js      # JavaScript gerado a partir do arquivo .ts
 ├── src/
 │   └── Estatisticas.ts      # projeto integrador
 ├── .gitignore
@@ -19,39 +25,6 @@ compensacao-typescript/
 ├── RESPOSTAS.md             # Partes A, B e C + relato de estudo
 ├── package.json
 └── tsconfig.json
-```
-
-## Requisitos
-
-- Node.js instalado (recomendado: versão LTS, 20 ou superior).
-- npm, que já vem com o Node.
-
-## Como rodar
-
-Clone o repositório e, dentro da pasta, instale as dependências:
-
-```bash
-git clone URL_DO_REPOSITORIO
-cd compensacao-typescript
-npm install
-```
-
-Para executar o projeto em TypeScript, com recompilação automática ao salvar:
-
-```bash
-npm run dev
-```
-
-Para gerar a pasta `dist/` com o JavaScript transpilado:
-
-```bash
-npm run build
-```
-
-Para executar o JavaScript já compilado:
-
-```bash
-npm start
 ```
 
 ## Scripts
@@ -64,8 +37,8 @@ npm start
 
 ## O que o programa calcula
 
-Média, mínimo, máximo, amplitude, desvio padrão populacional e mediana das temperaturas informadas no array `temperaturas`.
+Média, mínimo, máximo, amplitude, desvio padrão populacional e mediana das temperaturas informadas no array `temperaturas`. Resultado obtido com o conjunto `[21.5, 19.0, 24.3, 22.8, 20.1, 25.6, 23.0]`: média 22,33 °C, mínimo 19,00 °C, máximo 25,60 °C, amplitude 6,60 °C, desvio padrão 2,14 °C e mediana 22,80 °C.
 
 ## Por que copiar o array antes de ordenar?
 
-O método `sort()` ordena o array **no lugar**, ou seja, altera o próprio array original. Declarar o array com `const` impede apenas que a variável passe a apontar para outro array — não impede que o conteúdo seja modificado. Por isso, `[...dados].sort((a, b) => a - b)` cria uma cópia antes de ordenar: o cálculo da mediana usa a cópia, e o array original continua na ordem em que foi declarado.
+O método `sort()` ordena o array **no lugar**, ou seja, altera o próprio array original. Declarar o array com `const` impede apenas que a variável passe a apontar para outro array — não impede que o conteúdo seja modificado. Por isso, `[...dados].sort((a, b) => a - b)` cria uma cópia antes de ordenar: o cálculo da mediana usa a cópia, e o array original continua na ordem em que foi declarado — o que importa quando a ordem das temperaturas representa a sequência dos dias.
