@@ -1,8 +1,8 @@
 # Compensação TypeScript
 
-**Aluno:** [SEU NOME]
-**Turma:** [SUA TURMA]
-**Data:** [DATA DA ENTREGA]
+**Aluno:** [LETÍCIA DA SILVA TRUNFIO]
+**Turma:** [CIENCIA DA COMPUTAÇÃO, TURMA A - NOTURNO]
+**Data:** [22/09/2026]
 
 Projeto de compensação de carga horária sobre Git, GitHub, TypeScript, variáveis, escopo e tipagem.
 

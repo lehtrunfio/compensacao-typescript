@@ -1,7 +1,5 @@
 # RESPOSTAS — Compensação TypeScript
 
-> Antes de entregar, substitua os campos entre colchetes pelos seus dados e pelas versões instaladas na sua máquina.
-
 ## Parte A — Git e GitHub
 
 ### A1. Qual comando resolve cada situação?
@@ -100,8 +98,8 @@ git push -u origin main
 Se as alterações já tinham sido commitadas antes da troca do remoto, os comandos `git add` e `git commit` não precisam ser repetidos.
 
 ### A5. Prática
-
-URL do repositório público: **[COLE AQUI A URL REAL DO SEU REPOSITÓRIO]**
+/
+URL do repositório público: **[github.com](https://github.com/lehtrunfio/compensacao-typescript)**
 
 Primeiro commit feito pela linha de comando, depois de criar no GitHub um repositório vazio chamado `compensacao-typescript`:
 
@@ -187,11 +185,27 @@ npx tsc --init
 npm install -D typescript @types/node tsx
 ```
 
-Saídas obtidas na máquina:
+Ambiente e saida obtida:
 
 ```text
-node -v: [EXECUTE E COLE A VERSÃO REAL, EX.: v22.14.0]
-npx tsc -v: [EXECUTE E COLE A VERSÃO REAL, EX.: Version 5.9.2]
+Ambiente usado: Playground oficial do TypeScript (typescriptlang.org/play).
+Não instalei o Node.js na máquina, então rodei o src/Estatisticas.ts no Playground,
+conforme sugestão do professor. O Playground exibiu o JavaScript gerado e a saída abaixo:
+
+[LOG]: "Temperaturas: 21.5, 19.0, 24.3, 22.8, 20.1, 25.6, 23.0 °C"
+[LOG]: "Média: 22.33 °C"
+[LOG]: "Mínimo: 19.00 °C"
+[LOG]: "Máximo: 25.60 °C"
+[LOG]: "Amplitude: 6.60 °C"
+[LOG]: "Desvio padrão populacional: 2.14 °C"
+[LOG]: "Mediana: 22.80 °C"
+
+Os comandos node -v, npx tsc -v, npm run dev e npm run build dependem do Node
+instalado, que não consegui instalar no computador disponível.
+
+Os valores batem com o cálculo manual: média 22,33 °C, mediana 22,80 °C,
+desvio padrão populacional 2,14 °C e amplitude 6,60 °C (25,60 − 19,00).
+
 ```
 
 Bloco `scripts` do `package.json`:
@@ -380,17 +394,6 @@ Resultados obtidos com o conjunto `[21.5, 19.0, 24.3, 22.8, 20.1, 25.6, 23.0]` n
 
 ## Relato de estudo
 
-O conceito das três apostilas que eu considerei mais difícil foi a diferença entre proteger a referência e proteger o conteúdo no `const`. No começo eu achava que `const` deixava tudo imutável, mas entendi que ele trava apenas a ligação entre o nome e o valor: `cores.push("verde")` funciona, `cores = ["verde"]` não. O que me ajudou foi pensar na metáfora da etiqueta colada na caixa: a etiqueta não pode ser transferida para outra caixa, mas o conteúdo da caixa pode ser trocado. Um bug concreto que o TypeScript pegaria e o JavaScript deixaria passar é uma função declarada como `soma(a: number, b: number)` recebendo `soma("7", 3)`: em JavaScript isso roda e devolve o texto `"73"` em vez do número `10`, e o erro só aparece muito depois, quando algum cálculo resulta em `NaN`. Em TypeScript, o editor recusa na hora, antes de o programa rodar. Para alguém que nunca programou, eu explicaria `let` como uma caixa onde você pode guardar coisas diferentes ao longo do dia, e `const` como uma gaveta etiquetada que sempre mantém a mesma etiqueta e o mesmo lugar — o que está dentro pode até mudar, mas a gaveta não se muda para outro armário. Como padrão, uso `const`; só troco para `let` quando existe uma reatribuição real, como um contador ou um acumulador. Também ficou claro por que `var` não entra em código novo: por ignorar blocos e aceitar redeclaração, ela cria vazamentos silenciosos que geram bugs difíceis de achar.
+Sendo sincera, a maior dificuldade não foi um conceito isolado: foi assimilar o conjunto todo em pouco tempo. As três apostilas trazem muita informação nova ao mesmo tempo — Git e GitHub, ambiente do TypeScript, transpilação, variáveis, escopo e tipagem — e no começo eu me perdia sobre qual peça fazia o quê. O que mais me travou foi a diferença entre proteger a referência e proteger o conteúdo no const, justamente porque parecia contraditório: se const significa "não muda", por que cores.push("verde") funciona e cores = ["verde"] não? Entendi que ele trava apenas a ligação entre o nome e o valor, não o interior do objeto. A metáfora da etiqueta colada na caixa resolveu: a etiqueta não pode ser transferida para outra caixa, mas o conteúdo da caixa pode ser trocado. Também tive dificuldade com o type erasure e com os módulos CommonJS e ES Modules, que só ficaram claros quando vi o JavaScript gerado lado a lado com o TypeScript original.
 
-## Checklist de entrega
-
-| OK | Item |
-| --- | --- |
-| ( ) | Repositório público `compensacao-typescript` criado e com README |
-| ( ) | `RESPOSTAS.md` com as Partes A, B e C respondidas |
-| ( ) | `package.json` com os scripts `dev`, `build` e `start` |
-| ( ) | `tsconfig.json` presente |
-| ( ) | `src/Estatisticas.ts` rodando com `npm run dev` |
-| ( ) | Pasta `dist/` gerada por `npm run build` |
-| ( ) | Relato de estudo escrito |
-| ( ) | URL do repositório enviada ao professor dentro do prazo |
+Como as explicações escritas sozinhas não bastaram, eu precisei fazer pesquisas no google e assisti a algumas videoaulas, principalmente sobre escopo, hoisting e a zona morta temporal. Ver o mesmo trecho sendo executado passo a passo — e o erro aparecendo no editor no momento exato — fez diferença muito maior do que reler o texto. Aos poucos ficou claro o encadeamento: git add e commit constroem o histórico local, o push o leva para a nuvem, e o tsc é quem transforma o .ts em .js antes de qualquer execução.
